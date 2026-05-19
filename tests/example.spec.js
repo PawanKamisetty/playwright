@@ -430,7 +430,7 @@ test.describe.skip("Files", () => {
 test.describe("Dialogs", () => {
   test("accept an alert dialog", async ({ page }) => {
     await page.goto("https://the-internet.herokuapp.com/javascript_alerts");
-    // ✅ Set up BEFORE the action that triggers the dialog
+    // Set up BEFORE the action that triggers the dialog
     page.on("dialog", async (dialog) => {
       console.log("Dialog type:", dialog.type()); // 'alert'
 
