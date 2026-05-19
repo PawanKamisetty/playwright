@@ -33,11 +33,11 @@ jobs:
         name: blob-report-${{ matrix.shardIndex }}
         path: blob-report
         retention-days: 1
-        
+
   merge-reports:
     # Merge reports after playwright-tests, even if some shards have failed
     if: ${{ !cancelled() }}
-    needs: [playwright-tests]
+    needs: [test]
 
     runs-on: ubuntu-latest
     steps:
