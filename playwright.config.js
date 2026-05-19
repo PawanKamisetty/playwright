@@ -1,6 +1,6 @@
 // @ts-check
-import { defineConfig, devices } from '@playwright/test';
-require('dotenv').config();
+import { defineConfig, devices } from "@playwright/test";
+require("dotenv").config();
 
 /**
  * Read environment variables from file.
@@ -14,7 +14,7 @@ require('dotenv').config();
  * @see https://playwright.dev/docs/test-configuration
  */
 export default defineConfig({
-  testDir: './tests',
+  testDir: "./tests",
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -24,18 +24,18 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  reporter: "html",
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
     // All requests we send go to this API endpoint.
-    baseURL: process.env.BASE_URL,
+    baseURL: "https://www.saucedemo.com",
     extraHTTPHeaders: {
       // We set this header per GitHub guidelines.
-      'Accept': 'application/vnd.github.v3+json',
+      Accept: "application/vnd.github.v3+json",
       // Add authorization token to all requests.
       // Assuming personal access token available in the environment.
-      'Authorization': `token ${process.env.API_TOKEN}`,
+      Authorization: `token ${process.env.API_TOKEN}`,
     },
 
     // proxy: {
@@ -43,21 +43,19 @@ export default defineConfig({
     //   username: 'user',
     //   password: 'secret'
     // },
-    
+
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+    trace: "on-first-retry",
   },
 
   /* Configure projects for major browsers */
   projects: [
-
     // { name: 'setup', testMatch: /.*\.setup\.js/ },
 
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      name: "chromium",
+      use: { ...devices["Desktop Chrome"] },
       // dependencies: ['setup'],
-
     },
 
     // {
@@ -132,4 +130,3 @@ export default defineConfig({
   //   reuseExistingServer: !process.env.CI,
   // },
 });
-
